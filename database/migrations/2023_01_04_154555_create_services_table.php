@@ -15,7 +15,13 @@ return new class extends Migration
     {
         Schema::create('services', function (Blueprint $table) {
             $table->id();
+            $table->string('service_name');
             $table->string('name');
+            $table->longtext('description');
+            $table->string('image');
+            $table->string('price');
+            $table->unsignedBigInteger('author_id');
+            $table->foreign('author_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
